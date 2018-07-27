@@ -12,11 +12,7 @@
         <img @click="decode(c)" v-bind:src="c.capture" height="50" />
       </li>
     </ul>
-    <ul>
-      <li v-for="res in results" :key="res.id">
-        <p> {{res.code}} </p>
-      </li>
-    </ul>
+    {{results}}
   </b-container>
 </template>
 
@@ -70,7 +66,8 @@ export default {
           if (result.codeResult) {
             console.log('result obj', result)
             console.log('result', result.codeResult.code)
-            this.results.push({id: this.index, code: result.codeResult.code})
+            // this.results.push({id: this.index, code: result.codeResult.code})
+            this.results.push(result.codeResult.code)
           } else {
             console.log('not detected')
           }
