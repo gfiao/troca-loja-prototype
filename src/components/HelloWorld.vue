@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <b-container fluid>
     <div>
       <video ref="video" id="video" width="640" height="480" autoplay></video>
     </div>
@@ -12,7 +12,7 @@
         <img @click="decode(c)" v-bind:src="c.capture" height="50" />
       </li>
     </ul>
-  </div>
+  </b-container>
 </template>
 
 <script>
