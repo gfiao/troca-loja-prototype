@@ -79,10 +79,15 @@ export default {
   mounted() {
     this.video = this.$refs.video
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-        this.video.srcObject = stream
-        this.video.play()
-      })
+      navigator.mediaDevices
+        .getUserMedia({
+          video: true,
+          advanced: [{ facingMode: 'environment' }]
+        })
+        .then(stream => {
+          this.video.srcObject = stream
+          this.video.play()
+        })
     }
   }
 }
