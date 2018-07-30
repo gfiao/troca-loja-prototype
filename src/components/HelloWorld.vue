@@ -43,7 +43,7 @@ export default {
     },
 
     decode(image) {
-      // console.log(image)
+      let martelada
       Quagga.decodeSingle(
         {
           decoder: {
@@ -64,19 +64,22 @@ export default {
         },
         function(result) {
           if (result === undefined) {
-            console.log('result undifened')
-            this.results.push('undifened')
+            console.log('result undefined')
+            martelada = 'undefined'
+            // this.results.push('undefined')
           }
           if (result.codeResult) {
             console.log('result obj', result)
             console.log('result', result.codeResult.code)
             // this.results.push({id: this.index, code: result.codeResult.code})
-            this.results.push(result.codeResult.code)
+            martelada = result.codeResult.code
+            // this.results.push(result.codeResult.code)
           } else {
             console.log('not detected')
           }
         }
       )
+      this.results.push(martelada)
     }
   },
 
@@ -86,10 +89,10 @@ export default {
       console.log(navigator.mediaDevices)
       navigator.mediaDevices
         .getUserMedia({
-          video: {
-            // true
-            facingMode: { exact: 'environment' }
-          }
+          // video: {
+          //   facingMode: { exact: 'environment' }
+          // }
+          video: true
         })
         .then(stream => {
           this.video.srcObject = stream
