@@ -86,9 +86,10 @@ export default {
       console.log(navigator.mediaDevices)
       navigator.mediaDevices
         .getUserMedia({
-          video:
-            true
-            // facingMode: { exact: 'environment' }
+          video: {
+            // true
+            facingMode: { exact: 'environment' }
+          }
         })
         .then(stream => {
           this.video.srcObject = stream
