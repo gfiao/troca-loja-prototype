@@ -43,7 +43,7 @@ export default {
     },
 
     decode(image) {
-      console.log(image)
+      // console.log(image)
       Quagga.decodeSingle(
         {
           decoder: {
@@ -63,6 +63,10 @@ export default {
           // '/src/assets/big.jpg'
         },
         function(result) {
+          if (result === undefined) {
+            console.log('result undifened')
+            this.results.push('undifened')
+          }
           if (result.codeResult) {
             console.log('result obj', result)
             console.log('result', result.codeResult.code)
@@ -79,11 +83,12 @@ export default {
   mounted() {
     this.video = this.$refs.video
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      console.log(navigator.mediaDevices)
       navigator.mediaDevices
         .getUserMedia({
-          video: {
-            facingMode: { exact: 'environment' }
-          }
+          video:
+            true
+            // facingMode: { exact: 'environment' }
         })
         .then(stream => {
           this.video.srcObject = stream
