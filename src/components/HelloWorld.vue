@@ -18,6 +18,7 @@
 
 <script>
 import Quagga from 'quagga'
+import axios from 'axios'
 
 export default {
   name: 'HelloWorld',
@@ -40,6 +41,15 @@ export default {
         capture: canvas.toDataURL('image/jpg')
       }
       this.captures.push(frame)
+
+      axios
+        .get(`https://barcode-scanner-prototype.herokuapp.com/process/${frame.capture}`)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     },
 
     decode(image) {

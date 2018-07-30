@@ -12,6 +12,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
     "express": "^4.16.3",
     "quagga": "^0.12.1",
