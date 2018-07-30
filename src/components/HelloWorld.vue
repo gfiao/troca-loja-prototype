@@ -33,7 +33,7 @@ export default {
     capture() {
       this.canvas = this.$refs.canvas
       // eslint-disable-next-line
-      var context = this.canvas.getContext('2d').drawImage(this.video, 0, 0, 640, 480)
+      var context = this.canvas.getContext('2d').drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height)
       const frame = {
         id: this.index++,
         // eslint-disable-next-line
