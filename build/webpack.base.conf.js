@@ -75,10 +75,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      {
-        test: /\.wasm$/,
-        loaders: ['wasm-loader']
-      }
+      // {
+      //   test: /\.wasm$/,
+      //   loaders: ['wasm-loader']
+      // }
     ]
   },
   node: {

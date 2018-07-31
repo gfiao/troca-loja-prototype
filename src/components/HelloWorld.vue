@@ -1,8 +1,8 @@
 <template>
   <b-container fluid>
-    <div id="scandit-barcode-picker" style="max-width: 1280px; max-height: 80%;">
-    </div>
-    <!-- <div>
+    <!-- <div id="scandit-barcode-picker" style="max-width: 1280px; max-height: 80%;">
+    </div> -->
+    <div>
       <video ref="video" id="video" width="640" height="480" autoplay></video>
     </div>
     <div>
@@ -13,7 +13,7 @@
       <li v-for="c in captures" :key="c.id">
         <img @click="decode(c)" v-bind:src="c.capture" height="50" />
       </li>
-    </ul> -->
+    </ul>
     {{results}}
   </b-container>
 </template>
@@ -21,7 +21,7 @@
 <script>
 import Quagga from 'quagga'
 import axios from 'axios'
-import * as ScanditSDK from 'scandit-sdk'
+// import * as ScanditSDK from 'scandit-sdk'
 
 export default {
   name: 'HelloWorld',
@@ -41,14 +41,14 @@ export default {
       const frame = {
         id: this.index++,
         // eslint-disable-next-line
-        capture: canvas.toDataURL('image/jpg')
+        capture: canvas.toDataURL('image/png')
       }
       this.captures.push(frame)
 
-      console.log(frame.capture)
+      // console.log(frame.capture)
       axios
-        // .post(`https://barcode-scanner-prototype.herokuapp.com/process/`, frame.capture)
-        .post(`http://127.0.0.1:8888/process`, frame.capture)
+        // .post(`https://barcode-scanner-prototype.herokuapp.com/process/`, frame)
+        .post(`http://127.0.0.1:8888/process`, frame)
         .then(response => {
           console.log(response.data)
         })
@@ -99,45 +99,47 @@ export default {
   },
 
   created() {
-    ScanditSDK.configure(this.licenseKey, {
-      engineLocation: 'https://unpkg.com/scandit-sdk/build'
-      // preloadEngineLibrary: true
-    })
+    // ScanditSDK.configure(this.licenseKey, {
+    //   engineLocation: 'https://unpkg.com/scandit-sdk/build'
+    //   // preloadEngineLibrary: true
+    // })
   },
 
   mounted() {
-    ScanditSDK.BarcodePicker.create(document.getElementById('scandit-barcode-picker'), {
-      playSoundOnScan: true
-    }).then(function(barcodePicker) {
-      const scanSettings = new ScanditSDK.ScanSettings({
-        enabledSymbologies: ['ean13'],
-        codeDuplicateFilter: 1000
-      })
-      barcodePicker.applyScanSettings(scanSettings)
+    // ScanditSDK.BarcodePicker.create(document.getElementById('scandit-barcode-picker'), {
+    //   playSoundOnScan: true
+    // }).then(function(barcodePicker) {
+    //   const scanSettings = new ScanditSDK.ScanSettings({
+    //     enabledSymbologies: ['ean13'],
+    //     codeDuplicateFilter: 1000
+    //   })
+    //   barcodePicker.applyScanSettings(scanSettings)
 
-      barcodePicker.onScan(function(scanResult) {
-        alert(scanResult.barcodes[0].data)
-        // scanResult.barcodes.reduce(function(string, barcode) {
-        //   return string + ScanditSDK.Barcode.Symbology.toHumanizedName(barcode.symbology) + ': ' + barcode.data + '\n'
-        // })
-      })
-    })
+    //   barcodePicker.onScan(function(scanResult) {
+    //     alert(scanResult.barcodes[0].data)
+    //   })
+    // })
 
-    // this.video = this.$refs.video
-    // if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    //   console.log(navigator.mediaDevices)
-    //   navigator.mediaDevices
-    //     .getUserMedia({
-    //       // video: {
-    //       //   facingMode: { exact: 'environment' }
-    //       // }
-    //       video: true
-    //     })
-    //     .then(stream => {
-    //       this.video.srcObject = stream
-    //       this.video.play()
-    //     })
-    // }
+    this.video = this.$refs.video
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      console.log(navigator.mediaDevices)
+      navigator.mediaDevices
+        .getUserMedia({
+          video: {
+            facingMode: { exact: 'environment' }
+          }
+          // video: true
+        })
+        .then(stream => {
+          this.video.srcObject = stream
+          this.video.play()
+          this.video.onloadedmetadata = function() {
+            // this.width = this.videoWidth
+            // this.height = this.videoHeight
+            alert(this.videoWidth + 'x' + this.videoHeight)
+          }
+        })
+    }
   }
 }
 </script>
