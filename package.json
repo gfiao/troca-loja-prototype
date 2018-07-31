@@ -16,6 +16,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "express": "^4.16.3",
     "quagga": "^0.12.1",
+    "scandit-sdk": "^3.1.0",
     "serve-static": "^1.13.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
