@@ -27,7 +27,6 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      licenseKey: 'ATwrXw9bEw81IyUL7gxS6Q8Db366LWoK1kbtMpBGv+U5KkGCdRw83GET+4UtWSWiw1Xb1JtE/D5MA2Ugf07t/vtZg0p0RQ5e7HViH/hnJp3bbbTrBUSjdo13JoSEcw6fpiFTVUNtbB9eI+Moxx7AlpB9VmPRVVQW0/AXyqv4UXTtlImgW01n6ltseCWEdFpPDk90tyN6Qsf2i0O3e1oibMRR04kKEivWCdBOlufyaNKvQW8PwvJU4lXclfggUrj5yhIXofuIN7TCIaTsCefhwG8BebYsYNEt6ngnTY5LYXemXgq6c6YdveDqfkakR8xFaVdTY0Qi6fZLZgrgjU5NNQ/y9yLwiu/zPaF1Cxc2aNP/Tav4XKd90Ln8Kszw5YOZV3VL0gH8w3hZdRZaP7JMDZEEoMFmTs0zY8EJ/7LLi/Y3I13RrycMEFhpAwdya7In3WWzYiGy/tZmP+xiiEOUZOVWknKfh8Et1Ecljg1heMMe42sF7pYd6MGiinJlbWxSU415xMRNbZ2NWtlr8gxkw5bhdHzrJoHbAnHaiDvr15rTloAJfh97bukyBze5R8gS8osDR+xILAx+2jZATc+D0cJArnNQr145Gb+groXbRY8boTHqO2r26UWXmW1BEvQUDbyu2Um+pzHZT11sgFJTTqSbhlkdcjTYS4Y329a3K/u8SfpDOsGJi7AmpU2SikoUW53fyrUIMc/BaZT+QRVVV9pkIo+kxf+VVplKLLOv0rawti96qEALwL00e9D+DghVw01PSrrSr8i8EHbOf+eP3wDlBDEx/NdgJgLsau6wLQVa8Aje2NK0JJFx2OntDw==',
       captures: [],
       results: [],
       index: 0
