@@ -117,9 +117,10 @@ export default {
       barcodePicker.applyScanSettings(scanSettings)
 
       barcodePicker.onScan(function(scanResult) {
-        alert(scanResult.barcodes.reduce(function(string, barcode) {
-          return string + ScanditSDK.Barcode.Symbology.toHumanizedName(barcode.symbology) + ': ' + barcode.data + '\n'
-        }))
+        alert(scanResult.barcodes[0].data)
+        // scanResult.barcodes.reduce(function(string, barcode) {
+        //   return string + ScanditSDK.Barcode.Symbology.toHumanizedName(barcode.symbology) + ': ' + barcode.data + '\n'
+        // })
       })
     })
 
